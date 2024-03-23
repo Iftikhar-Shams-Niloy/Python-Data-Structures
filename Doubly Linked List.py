@@ -5,13 +5,13 @@ class Node:
         self.prev = p
 
 class DoublyList:
-    def __init__(self, array):
+    def __init__(self, array): # array = [11, 22, 33]
         self.head = Node(None, None, None)
         tail = self.head
         for i in range(len(array)):
-            n = Node(array[i], None, None)
-            tail.next = n
-            n.prev = tail
+            new = Node(array[i], None, None)
+            tail.next = new
+            new.prev = tail
             tail = tail.next
         tail.next = self.head
         self.head.prev = tail

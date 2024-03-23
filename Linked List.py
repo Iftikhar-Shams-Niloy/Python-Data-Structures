@@ -11,8 +11,8 @@ class LinkedList:
             self.head = Node(array[0], None)
             tail = self.head
             for i in range(1, len(array)):
-                n = Node(array[i], None)
-                tail.next = n
+                new_node  = Node(array[i], None)
+                tail.next = new_node
                 tail = tail.next
         else:
             self.head = a
@@ -20,123 +20,124 @@ class LinkedList:
 
     def countNode(self):
         count = 0
-        temp = self.head
-        while temp != None:
+        pointer = self.head
+        while pointer != None:
             count += 1
-            temp = temp.next
-        return count
+            pointer = pointer.next
+        i=count
+        return i
 
     def printList(self):
-        temp = self.head
-        while temp != None:
-            if temp.next != None:
-                print(temp.element, end=", ")
+        pointer = self.head
+        while pointer != None:
+            if pointer.next != None:
+                print(pointer.element, end=", ")
             else:
-                print(temp.element)
-            temp = temp.next
+                print(pointer.element)
+            pointer = pointer.next
 
     def nodeAt(self, idx):
-        temp = self.head
+        pointer = self.head
         count = 0
         flag = 0
         none_node = Node(None, None)
-        while temp != None:
+        while pointer != None:
             if count == idx:
-                flag = temp
+                flag = pointer
             count += 1
-            temp = temp.next
+            pointer = pointer.next
         if flag == 0:
             flag = none_node
         return flag
 
     def get(self, idx):
-        temp = self.head
+        pointer = self.head
         count = 0
         give = 0
         none_node = Node(None, None)
-        while temp != None:
+        while pointer != None:
             if count == idx:
-                give = temp.element
+                give = pointer.element
             count += 1
-            temp = temp.next
+            pointer = pointer.next
         if give == 0:
             give = none_node.element
         return give
 
     def set(self, idx, elem):
-        temp = self.head
+        pointer = self.head
         count = 0
         give = 0
         none_node = Node(None, None)
-        while temp != None:
+        while pointer != None:
             if count == idx:
-                give = temp.element
-                temp.element = elem
+                give = pointer.element
+                pointer.element = elem
             count += 1
-            temp = temp.next
+            pointer = pointer.next
         if give == 0:
             give = none_node.element
         return give
 
     def indexOf(self, elem):
         count = 0
-        temp = self.head
+        pointer = self.head
         idx = -1
-        while temp != None:
-            if temp.element == elem:
+        while pointer != None:
+            if pointer.element == elem:
                 idx = count
-            temp = temp.next
+            pointer = pointer.next
             count += 1
         return idx
 
     def contains(self, elem):
-        temp = self.head
+        pointer = self.head
         has = False
-        while temp != None:
-            if temp.element == elem:
+        while pointer != None:
+            if pointer.element == elem:
                 has = True
-            temp = temp.next
+            pointer = pointer.next
         return has
 
     def copyList(self):
         new_head = Node(self.head.element, None)
         tail = new_head
-        temp = self.head.next
-        while temp != None:
-            n = Node(temp.element, None)
+        pointer = self.head.next
+        while pointer != None:
+            n = Node(pointer.element, None)
             tail.next = n
             tail = tail.next
-            temp = temp.next
+            pointer = pointer.next
         return new_head
 
     def reverseList(self):
         new_head = Node(self.head.element, None)
-        temp = self.head.next
-        while temp != None:
-            n = Node(temp.element, new_head)
+        pointer = self.head.next
+        while pointer != None:
+            n = Node(pointer.element, new_head)
             new_head = n
-            temp = temp.next
+            pointer = pointer.next
         return new_head
 
     def insert(self, elem, idx):
-        n = Node(elem, None)
+        new = Node(elem, None)
         if  self.countNode() > idx > 0:
             n1 = self.nodeAt(idx)
             n2 = self.nodeAt(idx - 1)
-            n.next = n1
-            n2.next = n
+            new.next = n1
+            n2.next = new
         elif idx == 0:
             n1 = self.nodeAt(idx)
-            n.next = n1
-            self.head = n
+            new.next = n1
+            self.head = new
         elif idx == self.countNode():
             n1 = self.nodeAt(idx-1)
-            n1.next = n
+            n1.next = new
 
     def remove(self, idx):
         count = 0
-        temp = self.head
-        while temp != None:
+        pointer = self.head
+        while pointer != None:
             if count == idx:
                 if count == 0:
                     removed = self.head.element
@@ -154,7 +155,7 @@ class LinkedList:
                     n_removed = (self.nodeAt(idx))
                     return n_removed.element
             count += 1
-            temp = temp.next
+            pointer = pointer.next
 
     def rotateLeft(self):
         old_head = self.head
@@ -177,3 +178,17 @@ class LinkedList:
         last_node.next = new_next
         self.head = last_node
         before_last_node.next = None
+
+
+# Test Example
+my_linked_list = LinkedList([1,2,3,4,5])
+my_linked_list.printList()
+print(my_linked_list.countNode())
+node = my_linked_list.nodeAt(2)
+print(node.element)
+print("#########################")
+my_linked_list.set(2,99)
+my_linked_list.printList()
+print("#########################")
+my_linked_list.insert(911, 1)
+my_linked_list.printList()
