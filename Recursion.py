@@ -1,9 +1,11 @@
 def recursivePrintNumber(int):
     if int <= 0:
-        return
+        print("Last Number Reached")
     else:
-        recursivePrintNumber(int-1)
-        print(int)
+        recursivePrintNumber(int - 1)
+        if int % 2 == 0:
+            print(int)
+
 
 def recursiveReversePrintNumber(int):
     if int <= 0:
@@ -38,7 +40,6 @@ def rearrange(arr, idx=1, comparing=None):
             rearrange(arr, idx-1, comparing)
     else:
         return
-
 def recursiveInsertionSort(arr, idx=1, comparing=None):
     if idx >= 1 and idx < len(arr):
         comparing = arr[idx]
@@ -49,6 +50,7 @@ def recursiveInsertionSort(arr, idx=1, comparing=None):
         return
 
 cache = [None]*10
+
 def nth_fib(n):
     if n <= 1:
         return n
@@ -61,6 +63,7 @@ def nth_fib(n):
 #################################################################
 ##########################  START   ############################
 #################################################################
+flag = False
 def addEven(array, idx=None, sum=0):
     if idx == None:
         idx = len(array)-1
@@ -68,13 +71,11 @@ def addEven(array, idx=None, sum=0):
     if idx >= 0 :
         if array[idx]%2 == 0:
             sum += array[idx]
-            addEven(array, idx-1, sum)
-        else:
-            addEven(array,idx-1,sum)
+        addEven(array, idx-1, sum)
     else:
-        print("Sum of even numbers:",sum)
-##############################################################
+        return "Sum of even numbers:",sum
 
+##############################################################
 class Node:
     def __init__(self, e, n):
         self.element = e
@@ -93,29 +94,19 @@ class LinkedList:
         else:
             self.head = a
 
-    def multiplyOdd(self, head=None, total=0):
-        if head==None:
-            head = self.head
-        if  head.next == None:
-            print(total)
-            return total
-        elif head.element == 1:
-            if total == 0:
-                total = 1
-            else:
-                total *= 1
-            head = head.next
-            self.multiplyOdd(head,total)
-        elif head.element%2 != 0:
-            if total == 0:
-                total = head.element
-            else:
-                total *= head.element
-                head = head.next
-            self.multiplyOdd(head,total)
-        elif head.element%2 == 0:
-            head = head.next
-            self.multiplyOdd(head,total)
+def multiplyOdd(head, total=0):
+    if head.element%2 == 1:
+        if total == 0:
+            total = head.element
+        else:
+            total *= head.element
+
+    if head.next == None:
+        print(total)
+        return total
+    else:
+        head = head.next
+        multiplyOdd(head,total)
 
 #########################################################
 
@@ -135,11 +126,20 @@ def nCr(n, r):
 #########################################################
 
 
-my_array = [1,2,3,4,5,6]
-addEven(my_array)
+
+
+
+
+my_array = [2,3,7,9,3]
+# my_sum = addEven(my_array)
+# print(my_sum)
 
 my_LL = LinkedList(my_array)
-my_LL.multiplyOdd()
-nCr(10,3)
+multiplyOdd(my_LL.head)
+
+
+# nCr(10,3)
+#
+# recursivePrintNumber(10)
 
 

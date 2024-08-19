@@ -1,17 +1,17 @@
 # Making Stack using Array
 
 class StackArray:
-    stack = []
+    stack = [None]*10
     pointer = -1
     def push(self, element):
-        self.stack.append(element)
         self.pointer += 1
+        self.stack[self.pointer] = element
     def peek(self):
         return (self.stack[self.pointer])
     def pop(self):
         value = self.stack[self.pointer]
-        self.stack = self.stack[:-1]
-        self.pointer -= 1
+        self.stack[self.pointer] = None
+        self.pointer = self.pointer - 1
         return value
 
     def CheckParenthesis(self, string):
@@ -108,3 +108,14 @@ class StackLinkedList():
             print(string)
             print("This expression is correct.")
 
+
+my_stack = StackArray()
+
+my_stack.push(5)
+my_stack.push("Niloy")
+my_stack.push("Shams")
+
+my_return = my_stack.pop()
+print(my_return)
+my_return2 = my_stack.pop()
+print(my_return2)
