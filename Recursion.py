@@ -54,11 +54,8 @@ cache = [None]*10
 def nth_fib(n):
     if n <= 1:
         return n
-    elif cache[n] != None:
-        return cache[n]
     else:
-        cache[n] = nth_fib(n-1) + nth_fib(n-2)
-        return cache[n]
+        return nth_fib(n-1) + nth_fib(n-2)
 
 #################################################################
 ##########################  START   ############################
