@@ -17,15 +17,13 @@ class LinkedList:
         else:
             self.head = a
 
-
     def countNode(self):
         count = 0
         pointer = self.head
         while pointer != None:
             count += 1
             pointer = pointer.next
-        i=count
-        return i
+        return count
 
     def printList(self):
         pointer = self.head
@@ -39,14 +37,14 @@ class LinkedList:
     def nodeAt(self, idx):
         pointer = self.head
         count = 0
-        flag = 0
+        flag = False
         none_node = Node(None, None)
         while pointer != None:
             if count == idx:
                 flag = pointer
             count += 1
             pointer = pointer.next
-        if flag == 0:
+        if flag == False:
             flag = none_node
         return flag
 
@@ -54,14 +52,13 @@ class LinkedList:
         pointer = self.head
         count = 0
         give = 0
-        none_node = Node(None, None)
         while pointer != None:
             if count == idx:
                 give = pointer.element
             count += 1
             pointer = pointer.next
         if give == 0:
-            give = none_node.element
+            give = None
         return give
 
     def set(self, idx, elem):
