@@ -19,11 +19,23 @@ Many algorithms utilizes arrays to manage data. In python it can be compared wit
 Arrays are one of the most essential part to learn and code about data structures.
 
 ## Linked List
-Linkes list a data structure that is used to make insertion and deletion operations more structured.
-The differences between linked lists and arrays are,
+Linked list a data structure that is used to make insertion and deletion operations more structured. Linked lists are made of nodes. Each node has 2 initial elements, 1.value, 2."Next" pointer. Each node consists of,
+<ol>
+  <li>Value: A value of any datatype</li>
+  <li>Next Pointer: A pointer that indicated which next node is the current node is connected with </li>
+</ol>
+Array and linked list gets the same job done in a different way. For better understanding we can compare both to see the differences. The differences between linked lists and arrays are,
 <ul>
   <li> Linked list is non-contagious. Whereas, array is contagious.</li>
   <li> In case of linked list, memory is allocated to each elements individually. On the other hand, the whole array has a single allocated memory.</li>
   <li> Linked list is more efficient in instering and deleting a data than an arry.</li>
   <li> Linkes list follow a sequence to access data which array does not.</li>
 </ul>
+
+## Doubly Linked List
+Doubly linked list is similar to linked list but with one major difference. Doubly linked list has two pointers instead of one pointer of linked list. "Previous" pointer connects each node with the previous one. "Next" pointer connects each node with the next one, like linked list. Every node consists of,
+<ol>
+  <li>Value: A value of any datatype</li>
+  <li>Previous Pointer: A pointer that indicates which is the previous node of the current node</li>
+  <li>Next Pointer: A pointer that indicates which is the next node of the current node</li>
+</ol>
