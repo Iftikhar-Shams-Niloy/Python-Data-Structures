@@ -72,12 +72,11 @@ class DoublyList:
 
         loop_counter = 0
         while temp != head:
-            # The code lines inside if will only run Once when it finds the right NODE to remove
             if loop_counter == index:
-                previus_node = temp.prev
+                previous_node = temp.prev
                 next_node = temp.next
-                previus_node.next = next_node
-                next_node.prev = previus_node
+                previous_node.next = next_node
+                next_node.prev = previous_node
                 removed = temp.element
                 temp.prev = None
                 temp.next = None
@@ -107,7 +106,7 @@ class DoublyList:
 
 
 
-
+print("#################### TESTER CODE ###################")
 print("####################################################")
 my_arr = [10,34,12,4,-99,100]
 myDoublyLL = DoublyList(my_arr)
